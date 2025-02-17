@@ -1,17 +1,9 @@
-"""
-(*)~---------------------------------------------------------------------------
-Pupil - eye tracking platform
-Copyright (C) Pupil Labs
-
-Distributed under the terms of the GNU
-Lesser General Public License (LGPL v3.0).
-See COPYING and COPYING.LESSER for license details.
----------------------------------------------------------------------------~(*)
-"""
-
 import os
 import platform
 import sys
+
+if len(sys.argv) == 1:
+    sys.argv.append("capture")  # 원하는 기본 인자를 설정
 
 running_from_bundle = getattr(sys, "frozen", False)
 if not running_from_bundle:
@@ -220,9 +212,17 @@ def launcher():
         logger.addHandler(ch)
         # IPC setup to receive log messages. Use zmq_tools.ZMQ_handler to send messages to here.
         sub = zmq_tools.Msg_Receiver(zmq.Context(), ipc_sub_url, topics=("logging",))
+        # while True:
+        #     topic, msg = sub.recv()
+        #     record = logging.makeLogRecord(msg)
+        #     if record.args:
+        #         record.args = tuple(str(arg) if arg is not None else "None" for arg in record.args)
+        #     logger.handle(record)
         while True:
             topic, msg = sub.recv()
             record = logging.makeLogRecord(msg)
+            #print(f"LogRecord: {record.msg}, Arguments: {record.args}")
+
             logger.handle(record)
 
     ## IPC

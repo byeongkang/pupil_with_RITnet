@@ -35,8 +35,8 @@ def get_tag_commit() -> T.Optional[str]:
         return None
 
 
-ParsedVersion = T.Union[packaging.version.LegacyVersion, packaging.version.Version]
-
+# ParsedVersion = T.Union[packaging.version.LegacyVersion, packaging.version.Version]
+ParsedVersion = T.Union[packaging.version.Version]
 
 def parse_version(vstring: str) -> ParsedVersion:
     return packaging.version.parse(vstring)
@@ -96,6 +96,6 @@ def write_version_file(target_dir: str) -> pathlib.Path:
 
 
 if __name__ == "__main__":
-    print(f"{get_tag_commit()=}")
-    print(f"{pupil_version_string()=}")
-    print(f"{pupil_version()=}")
+    print(f"{get_tag_commit()}")
+    print(f"{pupil_version_string()}")
+    print(f"{pupil_version()}")
