@@ -1,7 +1,9 @@
 # Pupil + RITnet (detect)
 
 이 프로젝트는 [Pupil](https://github.com/pupil-labs/pupil)과 [RITnet](https://github.com/AayushKrChaudhary/RITnet)을 결합한 것으로, 기존 Pupil의 C++ 기반 detect 모듈을 RITnet으로 대체한 오픈소스 프로젝트입니다.
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/byeongkang/pupil_with_RITnet/main/1.png" width="80%" alt="Example workflow image"/>
+</p>
 ---
 
 ## 한국어 버전
